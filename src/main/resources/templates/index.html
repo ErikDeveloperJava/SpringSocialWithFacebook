@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+<h4 th:text="${user.name} + ' ' + ${user.surname}"></h4>
+<br/>
+<form action="/logout">
+    <button type="submit">Logout</button>
+</form>
+<br/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>create date</th>
+    </tr>
+    <th:block th:each="post : ${postList}">
+        <tr>
+            <td th:text="${post.name}"></td>
+            <td th:text="${post.description}"></td>
+            <td th:text="${#dates.format(post.createDate,'yyyy.MM.dd HH:mm:ss')}"></td>
+        </tr>
+    </th:block>
+</table>
+<br/>
+<form action="/post">
+    <button type="submit">create new post</button>
+</form>
+</body>
+</html>
